@@ -526,6 +526,7 @@ public:
             return out;
         }
 
+#ifndef __clang__
         reframework::InvokeRet invoke(API::ManagedObject* obj, const std::span<void*>& args) {
             static const auto fn = API::s_instance->sdk()->method->invoke;
             reframework::InvokeRet out{};
@@ -540,6 +541,7 @@ public:
 
             return out;
         }
+#endif // __clang__
 
         template<typename T>
         T get_function() const {
